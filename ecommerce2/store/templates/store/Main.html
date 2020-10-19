@@ -1,0 +1,167 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}?2993"></link>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>Ecommerce</title>
+    <script type='text/javascript'>
+      var user='{{ request.user }}'
+      var size='{{ size }}'
+      function getToken(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+               cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+               break;
+           }
+       }
+     }
+     return cookieValue;
+     }
+     var csrftoken = getToken('csrftoken');
+     
+    function getCookie(name){
+      var cookieArr=document.cookie.split(";");
+      for (var  i=0;i<cookieArr.length;i++){
+        var cookie=cookieArr[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')){
+          return decodeURIComponent(cookie.substring(name.length + 1));
+         }
+       }
+       return null;
+    }
+      var cart=JSON.parse(getCookie("cart"))
+      if (cart==undefined){
+        cart={}
+        console.log("cart was created",JSON.stringify(cart))
+        document.cookie='cart='+JSON.stringify(cart)+";domain=;path=/"
+      }
+    console.log('cart',cart)
+
+    </script>  
+     
+</head>
+<body style='font-family:"Montserrat",sans-family;background-color:#EEE2DC;'>
+    <nav id="navid"style='font-family:"montserrat",sans-family;' class="navbar navbar-expand-lg navbar-dark bg-dark ">
+      <a class="nav-link" href="#"><img id ='logo-icon' src="{% static 'images/logo.jpg' %}"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'Home' %}">Acceuil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'Store' %}">Produits<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Catégories
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form method="get" action="">
+                  {% for c in active_categories %}
+                  <a class="dropdown-item" href="{% url 'product_list' id=c.pk %}">{{ c.name }}</a>
+                  {% endfor %}
+                </form>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'About' %}">à propos de nous<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'Contact' %}">Contacter-nous<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+              <a href="{% provider_login_url 'google' %}" class="btn btn-warning"  style="border-radius: 12px;">
+                Se connecter</a>
+              <a href="{% url 'Cart' 1 %}" target="_blank">
+                  <img id="cart-icon" src="{% static 'images/shopingcard.png' %}"/>
+              </a>
+          </div>
+        </div>
+      </nav>   
+    
+    
+      <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    
+    <!--footer-->
+    <footer style='margin-top:20px;'class=" exo container-fluid padding">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <img id="logo" src="{% static 'images/logo.jpg' %}" alt="" >
+          <hr class="light" style="margin-bottom:12px;">
+          <p>+212 661-612932</p>
+          <p>idrissiashop@gmail.com</p>
+          <p>adresse</p>
+          <p>Fès,Fès-Meknès,30070</p>
+        </div>
+        <div class="col-md-4">
+          <hr style="margin-bottom:15px;margin-top:35px"class="light">
+          <h5>Heures de travail</h5>
+          <hr style="margin-top:15px;margin-bottom:15px;"class="light">
+          <p>Lundi jusqu'à vendridi: 9h-18h</p>
+          <p>Samedi: 9h-14h</p>
+          <p>Dimanche: fermé</p>
+       </div>
+       <div class="col-md-4">
+        <hr style="margin-bottom:15px;margin-top:35px"class="light">
+        <h5>Spécialités</h5>
+        <hr style="margin-top:15px;margin-bottom:15px;"class="light">
+        <p>Borderie des Takchita</p>
+        <p>Borderie des Caftans</p>
+        <p>Borderie des nappes</p>
+     </div>
+     <div class="col-md-12">
+       <hr class="light-100" >
+       <h5>&copy; Elegence.com</h5>
+     </div>
+       
+     </div>
+    </footer>
+    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type='text/javascript' src="{% static 'js/Cart.js' %}?32"></script>
+    <script>
+      $(document).ready(function () {
+      window.onscroll = function() {myFunction()};
+
+
+      var navbar = document.getElementById("navid");
+      var sticky = navbar.offsetTop;
+
+      function myFunction() {
+      if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+      } else {
+      navbar.classList.remove("sticky");
+      }
+      }
+      });
+    </script>
+</body>
+</html>

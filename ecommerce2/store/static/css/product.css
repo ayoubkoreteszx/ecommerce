@@ -1,0 +1,32 @@
+.col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
+	margin-top: 10px;
+}
+#cart-icon{
+    width:25px;
+	display:inline-block;
+    margin-left: 15px;
+    height: 40px;
+}
+#logo-icon{
+	width:30px;
+	display:inline-block;
+	margin-left: 15px;
+	height: 45px;
+}
+.container{
+	margin-top:32px;
+}
+.thumbnail{
+	align-self:center;
+}
+.nav-link{
+    font-size:1.2em !important;
+  }
+  .col-md-7 h2{
+	  color:#555
+  }
+  .price{
+	margin-top:8px;
+	color:#FE980F;
+	
+  }

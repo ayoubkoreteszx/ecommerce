@@ -1,0 +1,18 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            <h1 style="margin-top:30px;margin-bottom:20px;">Contactez-nous</h1>
+            <div class="form-group">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class=" btn btn-warning rounded-pill" type='submit'>Envoyer</button> 
+                </form>
+            </div>   
+       </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luxe et broderie</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}?232332"></link>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <script src="https://use.fontawesome.com/releases/v5.10.2/js/all.js"></script>
+   
+</head>
+<body style = "font-family:'Open Sans',helvetica;">
+      <section class="aboutus">
+          <div class="container1">
+            <div class="row">
+                <div class="nom col-sm-7">
+                    <h2 class='text-center'>Idrissia Moustaid</h2>
+                    <p style='font-size:18px'>Un bon tailleur de coutirier traditionnel et un professionnel qui possède des caractéristiques directement liées à sa pratique. La précision, la patience, l’écoute dans la relation au client, un sens de l’esthétique, de l’organisation et une rigueur à toute épreuve sont les piliers de ce savoir-faire.applique les techniques de couture traditionnelle pour confectionner, en toute autonomie, des vêtements dont la coupe est simple et traditionnelle ou, participer, sous la supervision d’un modéliste ou d’un styliste, à la réalisation de vêtements dont les coupes sont complexes ou plus élaborées. On est aussi  capable d'executer certaines tâches du processus de confection comme la coupe, la couture ou la finition. </p>
+                </div>
+                <div class="col-sm-5">
+                    <div class="img-wrap">
+                        <img  src="{% static 'images/profile.jpg' %}" alt="" class="rounded-circle">
+                    </div>
+                </div>
+            </div>
+          </div>
+      </section>
+<div class="bod2"style="margin-bottom:100px"> 
+<div class="container">
+    <div class="box">
+        <h2>01</h2>
+        <h3>costume traditionnels</h3>
+        <p>couturier de vêtements traditionnels marocains (caftans et djellabas)
+
+            crée et confectionne des vêtements traditionnels sur mesure ou en petites séries à partir d'un modèle standard.</p>
+    </div>
+    <div class="box">
+        <h2>02</h2>
+        <h3>l'art de borderie</h3>
+        <p>agrémenter des pièces de tissus en utilisant différentes techniques de points. Qu’elle soit traitée en relief ou à plat, avec des fils ou bien encore avec des perles, voire des paillettes.</p>
+    </div>
+    <div class="box">
+        <h2>03</h2>
+        <h3>vente en ligne</h3>
+        <p>avoir une formation solide pour se lancer dans le doamine de vente en ligne avec ses normes et ses exigences pour renrde nos clients heureux</p>
+    </div>
+</div>
+</div>
+
+<div class="container-fluid padding">
+    <div class="row justify-content-md-center">
+           <div class="col-lg-4">
+              <i style="margin-left:40px;margin-bottom:40px;width:320px;height:300px;color:gold;" class="fas fa-award"></i>
+           </div>
+    </div>
+
+    <div style='margin-bottom:50px;'class="row justify-content-md-center ">
+      <div class="col-lg-9"  >
+        <p>
+            <i class="fas fa-check"></i> 
+            <strong> Participation au Salon International de l'Industrie Traditionnelle au Sénégal 2017   </strong>
+        </p>
+        <p>
+            <i class="fas fa-check"></i> 
+            <strong>Participer à des activités de sensibilisation au rôle des femmes </strong>
+        </p>
+        <p>
+            <i class="fas fa-check"></i> 
+            <strong> Participation aux activités du salon régional de l'industrie traditionnelle à Meknès </strong>
+        </p>
+        <p >
+            <i class="fas fa-check"></i> 
+           <strong> 2nd Place Participation au festival régional du caftan marocain 2020 </strong>
+        </p>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock content %}  

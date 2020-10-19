@@ -1,0 +1,59 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a class="btn btn-dark" href="{% url 'Store' %}">&#x2190; Continuer le shoping</a>
+            <br>
+            <br>
+            <table class="table">
+              <tr>
+                <th><h5><strong>Items :</strong>{{order.get_cart_items}}</h5></th>
+                <th><h5><strong>Total :</strong>{{order.get_cart_total}} DH</h5></th>
+                <th>
+                    <a style="float:right;" class="btn btn-success" href="{% url 'Checkout' %}">check-out</a>
+                </th>
+              </tr>
+            </table>
+        </div>
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:1;"><Strong>Item</Strong></div>
+                <div style="flex:1;"><Strong>Size</Strong></div>
+                <div style="flex:1"><Strong>Price</Strong></div>
+                <div style="flex:1"><Strong>Quatity</Strong></div>
+                <div style="flex:1"><Strong>Total</Strong></div>
+            </div>
+            {% for item in items %}
+            <div class="cart-row">
+                <div style="flex:2">
+                    <img src="{{item.product.imageURL}}" alt="something wrong with the image" class="row-image">
+                </div>
+                <div style="flex:1;margin-top:6px;overflow:hidden">{{ item.product.name }}</div>
+                <div style="flex:1;margin-top:6px">{{ item.size }}  </div>
+                <div style="flex:1;margin-top:6px">{{ item.product.price }} DH</div>
+                <div style="flex:1;">
+                    <p class="quantity">{{ item.quantity }}</p>
+                    <div class="quantity">
+                       <img  onClick="window.location.reload();"  data-product="{{item.product.id}}" data-action="add" data-size="{{ item.size }}" src="{% static  'images/arrow-up.png' %}" alt="up" class="chg-quantity update-cart">
+                       <img onClick="window.location.reload();"  data-product={{item.product.id}} data-action="remove" data-size="{{ item.size }}" src="{% static  'images/arrow-down.png' %}" alt="down" class="chg-quantity update-cart">
+                    </div>
+                </div>
+                <div style="flex:1;margin-top:6px">{{ item.get_total }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+<script>
+    var buttonQuantity=document.getElementById("qua")
+</script>
+</body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}?35">

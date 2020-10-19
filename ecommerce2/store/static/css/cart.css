@@ -1,0 +1,23 @@
+@media(max-width:767px) {
+    body {
+        font-size: 1px;
+    };
+}
+
+@media(min-width:768px) {
+    body {
+        font-size: 1px;
+    };
+}
+
+@media(min-width:992px) {
+    body {
+        font-size: 1px;
+    };
+}
+
+@media(min-width:1200px) {
+    body {
+        font-size: 1px;
+    };
+}

@@ -1,0 +1,16 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    {% for product in products %}
+    <div  class="col-lg-4" >
+       <a href="{% url 'product' id=product.id %}" target="_blank"> <img  class="thumbnail" src="{{product.imageURL}}"/>
+        <div class="box-element product">
+            <h4>{{ product.name }}</h4>
+            <h4 style='margin-top:8px;	color:#FE980F;'><strong>{{ product.price }} DH</h4></strong>
+        </div>
+       </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

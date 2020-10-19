@@ -1,0 +1,8 @@
+{% extends 'store/Store.html' %}
+{% for product in products %}
+<p style="margin-top:600px;">{{ product.name }}</p>
+<p style='	color:#FE980F;'>{{ product.price }}</p>
+<p >{{product.image}}</p>this
+{% empty %} 
+<p>No product available for  category</p>
+{% endfor %}
